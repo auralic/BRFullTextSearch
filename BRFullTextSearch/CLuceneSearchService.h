@@ -107,4 +107,10 @@
  */
 - (NSString *)userDefaultsIndexUpdateCountKey;
 
+/**
+ *  Get the queued Modify Count
+ *
+ */
+@property (nonatomic, readonly) NSInteger currentQueuedTask;
+
 @end

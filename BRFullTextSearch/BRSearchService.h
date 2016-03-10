@@ -332,4 +332,21 @@ typedef void (^BRSearchServiceIndexUpdateBlock)(id <BRIndexUpdateContext> update
                                     sortType:(BRSearchSortType)sortType
                                    ascending:(BOOL)ascending;
 
+/**
+ * Reset the searcher immediately.
+ *
+ * Calling this method will reset the cached `lucene::search::Searcher`, so subsequent queries
+ * pick up any new changes to the index. Normally this is done automatically on the main thread,
+ * after any index modification operation completes. It is only possible to call this method from
+ * the main thread, and only necessary to call if after indexing on the main thread you need to
+ * search immediately on the current runloop.
+ */
+- (void)resetSearcher;
+
+/**
+ *  Get the queued Modify Count
+ *
+ */
+- (NSInteger)currentQueuedTask;
+
 @end
