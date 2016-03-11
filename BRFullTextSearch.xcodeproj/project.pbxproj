@@ -21,12 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		33B016CE1C92BD4800FA9225 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B016CC1C92BD4800FA9225 /* libstdc++.6.0.9.dylib */; };
+		33B016CF1C92BD4800FA9225 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B016CD1C92BD4800FA9225 /* libz.1.dylib */; };
 		C909C2651784CB600016C25E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C909C2641784CB600016C25E /* Foundation.framework */; };
 		C909C2771784CB600016C25E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C909C2641784CB600016C25E /* Foundation.framework */; };
 		C909C27A1784CB600016C25E /* libBRFullTextSearch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C909C2611784CB600016C25E /* libBRFullTextSearch.a */; };
 		C909C2801784CB600016C25E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C909C27E1784CB600016C25E /* InfoPlist.strings */; };
-		C909C2911784CC320016C25E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C909C2901784CC320016C25E /* libz.dylib */; };
-		C909C2931784CC380016C25E /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C909C2921784CC380016C25E /* libstdc++.dylib */; };
 		C909C2941784CC3E0016C25E /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C909C2921784CC380016C25E /* libstdc++.dylib */; };
 		C909C2951784CC400016C25E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C909C2901784CC320016C25E /* libz.dylib */; };
 		C909C4901784CF0A0016C25E /* gunichartables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C909C29F1784CF090016C25E /* gunichartables.cpp */; };
@@ -446,6 +446,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		33B016CC1C92BD4800FA9225 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "../../../../../usr/lib/libstdc++.6.0.9.dylib"; sourceTree = "<group>"; };
+		33B016CD1C92BD4800FA9225 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
 		C909C2611784CB600016C25E /* libBRFullTextSearch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBRFullTextSearch.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C909C2641784CB600016C25E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C909C2681784CB600016C25E /* BRFullTextSearch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRFullTextSearch-Prefix.pch"; sourceTree = "<group>"; };
@@ -895,9 +897,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C909C2931784CC380016C25E /* libstdc++.dylib in Frameworks */,
+				33B016CE1C92BD4800FA9225 /* libstdc++.6.0.9.dylib in Frameworks */,
+				33B016CF1C92BD4800FA9225 /* libz.1.dylib in Frameworks */,
 				C99FCBF01846746E00A90E66 /* UIKit.framework in Frameworks */,
-				C909C2911784CC320016C25E /* libz.dylib in Frameworks */,
 				C909C2651784CB600016C25E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -941,6 +943,8 @@
 		C909C2631784CB600016C25E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				33B016CC1C92BD4800FA9225 /* libstdc++.6.0.9.dylib */,
+				33B016CD1C92BD4800FA9225 /* libz.1.dylib */,
 				C99FCBEE1846745E00A90E66 /* UIKit.framework */,
 				C909C2921784CC380016C25E /* libstdc++.dylib */,
 				C909C2901784CC320016C25E /* libz.dylib */,
@@ -1738,7 +1742,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "TARGET=BRFullTextSearch\nACTION=\"clean build\"\nLIB=libBRFullTextSearch.a\nPRODUCT=BRFullTextSearch\n\nOUTPUT_DIR=\"${PROJECT_DIR}/Framework\"\nHEADERS_DIR=\"${OUTPUT_DIR}/Headers\"\nRESOURCE_DIR=\"${OUTPUT_DIR}/Resources\"\n\n# Start clean by removing output dir\nrm -rf ${HEADERS_DIR}\nmkdir -p \"${HEADERS_DIR}\"\n\n# Copy source headers into flat Headers directory\nrsync -a --include '*/' --include '**/*.h' --exclude '*' ${PROJECT_DIR}/clucene/src/shared/CLucene \"${HEADERS_DIR}/\"\nrsync -a --include '*/' --include '**/*.h' --exclude '*' ${PROJECT_DIR}/clucene/src/core/CLucene \"${HEADERS_DIR}/\"\nrsync -a --include '*/' --include '**/Snowball*.h' --exclude '*' --prune-empty-dirs ${PROJECT_DIR}/clucene/src/contribs-lib/CLucene \"${HEADERS_DIR}/\"\nrsync -a ${PROJECT_DIR}/clucene/src/contribs-lib/CLucene/snowball/libstemmer.h \"${HEADERS_DIR}/\"\nrsync -a --include 'CLucene' --include '**/*.h' --exclude '*' ${PROJECT_DIR}/${PRODUCT}/ \"${HEADERS_DIR}/\"\nrsync -a --include '*.lproj/' --include '*.lproj/*' --exclude '*' ${PROJECT_DIR}/${PRODUCT}/ \"${RESOURCE_DIR}/\"\n\necho \"Output to: ${OUTPUT_DIR}\"\n\n# change to \"Release Debug\" to build both\nCONFIGURATIONS=\"Debug Release\"\nfor CONFIG in ${CONFIGURATIONS}; do\n    FRAMEWORK_DIR=\"${OUTPUT_DIR}/${CONFIG}/${PRODUCT}.framework\"\n\n    echo \"Building $CONFIG build to ${FRAMEWORK_DIR}\"\n    rm -rf \"${FRAMEWORK_DIR}\"\n\n    DEVICE_DIR=${SYMROOT}/${CONFIG}-iphoneos\n    SIMULATOR_DIR=${SYMROOT}/${CONFIG}-iphonesimulator\n    UNIVERSAL_DIR=${SYMROOT}/${CONFIG}-universal\n\n    cd ${PROJECT_DIR}\n    xcodebuild -configuration ${CONFIG} -target ${TARGET} -sdk iphoneos ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO CONFIGURATION_BUILD_DIR=${DEVICE_DIR} >/dev/null\n    xcodebuild -configuration ${CONFIG} -target ${TARGET} -sdk iphonesimulator ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO CONFIGURATION_BUILD_DIR=${SIMULATOR_DIR} >/dev/null\n\n    rm -rf \"${UNIVERSAL_DIR}\"\n    mkdir \"${UNIVERSAL_DIR}\"\n\n    lipo -create -output \"${UNIVERSAL_DIR}/${PRODUCT}\" \"${DEVICE_DIR}/${LIB}\" \"${SIMULATOR_DIR}/${LIB}\"\n\n    mkdir -p \"${FRAMEWORK_DIR}/Versions/A\"\n\n    cd \"${FRAMEWORK_DIR}/Versions\"\n    ln -sf A Current\n\n    cp -r \"${HEADERS_DIR}\" \"${FRAMEWORK_DIR}/Versions/Current/\"\n  cp -r \"${RESOURCE_DIR}\" \"${FRAMEWORK_DIR}/Versions/Current/\"\n    cp \"${UNIVERSAL_DIR}/${PRODUCT}\" \"${FRAMEWORK_DIR}/Versions/Current\"\n\n    cd \"${FRAMEWORK_DIR}\"\n    ln -sf \"Versions/Current/${PRODUCT}\" \"${PRODUCT}\"\n    ln -sf Versions/Current/Headers Headers\n  ln -sf Versions/Current/Resources Resources\ndone\n";
+			shellScript = "TARGET=BRFullTextSearch\nACTION=\"clean build\"\nLIB=libBRFullTextSearch.a\nPRODUCT=BRFullTextSearch\n\nOUTPUT_DIR=\"${PROJECT_DIR}/Framework\"\nHEADERS_DIR=\"${OUTPUT_DIR}/Headers\"\nRESOURCE_DIR=\"${OUTPUT_DIR}/Resources\"\n\n# Start clean by removing output dir\nrm -rf ${HEADERS_DIR}\nmkdir -p \"${HEADERS_DIR}\"\n\n# Copy source headers into flat Headers directory\nrsync -a --include '*/' --include '**/*.h' --exclude '*' ${PROJECT_DIR}/clucene/src/shared/CLucene \"${HEADERS_DIR}/\"\nrsync -a --include '*/' --include '**/*.h' --exclude '*' ${PROJECT_DIR}/clucene/src/core/CLucene \"${HEADERS_DIR}/\"\nrsync -a --include '*/' --include '**/*.h' --exclude '*' ${PROJECT_DIR}/clucene/src/core/CLucene.h \"${HEADERS_DIR}/\"\nrsync -a --include '*/' --include '**/Snowball*.h' --exclude '*' --prune-empty-dirs ${PROJECT_DIR}/clucene/src/contribs-lib/CLucene \"${HEADERS_DIR}/\"\nrsync -a ${PROJECT_DIR}/clucene/src/contribs-lib/CLucene/snowball/libstemmer.h \"${HEADERS_DIR}/\"\nrsync -a --include 'CLucene' --include '**/*.h' --exclude '*' ${PROJECT_DIR}/${PRODUCT}/ \"${HEADERS_DIR}/\"\nrsync -a --include '*.lproj/' --include '*.lproj/*' --exclude '*' ${PROJECT_DIR}/${PRODUCT}/ \"${RESOURCE_DIR}/\"\n\necho \"Output to: ${OUTPUT_DIR}\"\n\n# change to \"Release Debug\" to build both\nCONFIGURATIONS=\"Debug Release\"\nfor CONFIG in ${CONFIGURATIONS}; do\nFRAMEWORK_DIR=\"${OUTPUT_DIR}/${CONFIG}/${PRODUCT}.framework\"\n\necho \"Building $CONFIG build to ${FRAMEWORK_DIR}\"\nrm -rf \"${FRAMEWORK_DIR}\"\n\nDEVICE_DIR=${SYMROOT}/${CONFIG}-iphoneos\nSIMULATOR_DIR=${SYMROOT}/${CONFIG}-iphonesimulator\nUNIVERSAL_DIR=${SYMROOT}/${CONFIG}-universal\n\ncd ${PROJECT_DIR}\nxcodebuild -configuration ${CONFIG} -target ${TARGET} -sdk iphoneos ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO CONFIGURATION_BUILD_DIR=${DEVICE_DIR} >/dev/null\nxcodebuild -configuration ${CONFIG} -target ${TARGET} -sdk iphonesimulator ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO CONFIGURATION_BUILD_DIR=${SIMULATOR_DIR} >/dev/null\n\nrm -rf \"${UNIVERSAL_DIR}\"\nmkdir \"${UNIVERSAL_DIR}\"\n\nlipo -create -output \"${UNIVERSAL_DIR}/${PRODUCT}\" \"${DEVICE_DIR}/${LIB}\" \"${SIMULATOR_DIR}/${LIB}\"\n\nmkdir -p \"${FRAMEWORK_DIR}/Versions/A\"\n\ncd \"${FRAMEWORK_DIR}/Versions\"\nln -sf A Current\n\ncp -r \"${HEADERS_DIR}\" \"${FRAMEWORK_DIR}/Versions/Current/\"\ncp -r \"${RESOURCE_DIR}\" \"${FRAMEWORK_DIR}/Versions/Current/\"\ncp \"${UNIVERSAL_DIR}/${PRODUCT}\" \"${FRAMEWORK_DIR}/Versions/Current\"\n\ncd \"${FRAMEWORK_DIR}\"\nln -sf \"Versions/Current/${PRODUCT}\" \"${PRODUCT}\"\nln -sf Versions/Current/Headers Headers\nln -sf Versions/Current/Resources Resources\ndone\n\nopen \"${OUTPUT_DIR}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
